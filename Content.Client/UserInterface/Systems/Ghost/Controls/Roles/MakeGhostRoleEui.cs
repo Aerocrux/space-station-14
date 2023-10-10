@@ -1,4 +1,4 @@
-﻿using Content.Client.Eui;
+using Content.Client.Eui;
 using Content.Shared.Eui;
 using Content.Shared.Ghost.Roles;
 using JetBrains.Annotations;
@@ -41,7 +41,7 @@ public sealed class MakeGhostRoleEui : BaseEui
         _window.OpenCentered();
     }
 
-    private void OnMake(NetEntity entity, string name, string description, string rules, bool makeSentient)
+    private void OnMake(NetEntity entity, string name, string description, string rules, bool makeSentient, bool allowMovement, bool allowSpeech)
     {
         var player = _playerManager.LocalPlayer;
         if (player == null)
@@ -54,13 +54,20 @@ public sealed class MakeGhostRoleEui : BaseEui
             $"\"{CommandParsing.Escape(entity.ToString())}\" " +
             $"\"{CommandParsing.Escape(name)}\" " +
             $"\"{CommandParsing.Escape(description)}\" " +
-            $"\"{CommandParsing.Escape(rules)}\"";
+            $"\"{CommandParsing.Escape(rules)}\" " +
+            $"\"{CommandParsing.Escape(allowMovement.ToString())}\" " +
+            $"\"{CommandParsing.Escape(allowSpeech.ToString())}\"";
 
         _consoleHost.ExecuteCommand(player.Session, makeGhostRoleCommand);
 
         if (makeSentient)
         {
-            var makeSentientCommand = $"makesentient \"{CommandParsing.Escape(entity.ToString())}\"";
+            var makeSentientCommand =
+                $"makesentient " +
+                $"\"{CommandParsing.Escape(entity.ToString())}\" " +
+                $"\"{CommandParsing.Escape(allowMovement.ToString())}\" " +
+                $"\"{CommandParsing.Escape(allowSpeech.ToString())}\"";
+
             _consoleHost.ExecuteCommand(player.Session, makeSentientCommand);
         }
 

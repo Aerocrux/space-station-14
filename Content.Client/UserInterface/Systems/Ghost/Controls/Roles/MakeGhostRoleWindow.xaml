@@ -1,4 +1,4 @@
-﻿<DefaultWindow Title="{Loc Make Ghost Role}"
+<DefaultWindow Title="{Loc Make Ghost Role}"
             xmlns="https://spacestation14.io">
 
     <BoxContainer Orientation="Vertical">
@@ -21,6 +21,14 @@
         <BoxContainer Orientation="Horizontal">
             <Label Name="MakeSentientLabel" Text="Make Sentient" />
             <CheckBox Name="MakeSentientCheckbox" />
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal">
+            <Label Name="AllowMovementLabel" Text="Allow Movement" />
+            <CheckBox Name="AllowMovementCheckbox" />
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal">
+            <Label Name="AllowSpeechLabel" Text="Allow Speech" />
+            <CheckBox Name="AllowSpeechCheckbox" Pressed ="True" />
         </BoxContainer>
         <BoxContainer Orientation="Horizontal">
             <Button Name="MakeButton" Text="Make" />
